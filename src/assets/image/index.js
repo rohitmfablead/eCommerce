@@ -1,0 +1,22 @@
+export const SPLASH =require("../image/Splash.png")
+export const LOGO =require("../image/Logo.png")
+export const user =require("../image/user.png")
+export const gmail =require("../image/gmail.png")
+export const invisible =require("../image/invisible.png")
+export const show =require("../image/show.png")
+export const unlock =require("../image/unlock.png")
+export const camera =require("../image/camera.png")
+export const bell =require("../image/bell.png")
+export const search =require("../image/search.png")
+export const heart =require("../image/heart.png")
+export const homes =require("../image/homes.png")
+export const house =require("../image/house.png")
+export const shopping_cart =require("../image/shopping-cart.png")
+export const trolley =require("../image/trolley.png")
+export const user2 =require("../image/user2.png")
+
+// banner 
+
+export const Banner =require("../image/Banner.png")
+export const banner1 =require("../image/banner1.jpg")
+export const banner2 =require("../image/banner2.jpg")
