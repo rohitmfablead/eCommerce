@@ -16,7 +16,7 @@ const SplashScreen = () => {
 
   const checkLoginStatus = async () => {
     try {
-      const userData = await AsyncStorage.getItem('user');
+      const userData = await AsyncStorage.getItem('loginUser');
       if (userData) {
         navigation.replace('Bottom');
       } else {

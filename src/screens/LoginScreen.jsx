@@ -20,26 +20,31 @@ const LoginScreen = ({ navigation }) => {
             });
             return;
         }
+    
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    showMessage({
-                        message: "Please enter a valid email address",
-                        type: "danger",
-                    });
-                    return;
-                }
-
+        if (!emailRegex.test(email)) {
+            showMessage({
+                message: "Please enter a valid email address",
+                type: "danger",
+            });
+            return;
+        }
+    
         try {
             const storedUserData = await AsyncStorage.getItem('user');
-
+    
             if (storedUserData) {
                 const { email: savedEmail, password: savedPassword } = JSON.parse(storedUserData);
-
+    
                 if (email === savedEmail && password === savedPassword) {
+                    // ✅ Store email without JSON.stringify (since it's a string)
+                    await AsyncStorage.setItem('loginUser', savedEmail);
+    
                     showMessage({
                         message: "Login successful!",
                         type: "success",
                     });
+    
                     navigation.replace('Bottom');
                 } else {
                     showMessage({
@@ -60,6 +65,7 @@ const LoginScreen = ({ navigation }) => {
             });
         }
     };
+    
 
     return (
         <BaseLayout>

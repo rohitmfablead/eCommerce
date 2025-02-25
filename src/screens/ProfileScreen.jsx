@@ -8,7 +8,7 @@ import { showMessage } from 'react-native-flash-message';
 const ProfileScreen = ({ navigation }) => {
     const handleLogout = async () => {
         try {
-            await AsyncStorage.removeItem('user');
+            await AsyncStorage.removeItem('loginUser');
             showMessage({
                 message: "Logout successful!",
                 type: "success",
@@ -25,8 +25,8 @@ const ProfileScreen = ({ navigation }) => {
     return (
         <BaseLayout>
             <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                <TouchableOpacity 
-                    style={styles.logoutButton} 
+                <TouchableOpacity
+                    style={styles.logoutButton}
                     onPress={handleLogout}
                 >
                     <Text style={styles.logoutText}>Logout</Text>

@@ -1,9 +1,9 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { heart, LOGO } from '../assets/image';
+import { heart, heart1 } from '../assets/image';
 import { Colors } from '../utils/theme';
 
-const SpecialComponent = ({ data }) => {
+const SpecialComponent = ({ data, HandleNavigate, cartItems, HandleLike, likedProducts }) => {
     return (
         <View style={styles.container}>
             <FlatList
@@ -13,55 +13,69 @@ const SpecialComponent = ({ data }) => {
                 contentContainerStyle={{ paddingHorizontal: 20 }}
                 data={data.slice(1, 5)}
                 keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => (
-                    <View style={styles.box}>
-                        <View style={styles.imageContainer}>
-                            <Image style={styles.image} source={{ uri: item.image }} />
-                        </View>
-                        <View style={styles.textContainer}>
-                            <Text numberOfLines={1} style={styles.title}>{item.title}</Text>
-                            <Text style={styles.price}>{item.price}</Text>
-                            {/* <Text style={styles.originalPrice}>$856.60</Text> */}
-                            <View style={styles.ratingContainer}>
-                                <Text style={styles.ratingText}>⭐ {item.rating.rate} ({item.rating.count})</Text>
-                            </View>
-                        </View>
-                        <TouchableOpacity style={{
-                            width: 40,
-                            height: 40,
-                            borderRadius: 20,
-                            //    backgroundColor: 'red',
-                            position: 'absolute',
-                            right: 5,
-                            top: 5,
-                            justifyContent: 'center',
-                            alignItems: 'center'
+                renderItem={({ item }) => {
+                    // const inCart = cartItems.some((cartItem) => cartItem.id === item.id);
+                   const isLiked = likedProducts.some((likedItem) => likedItem.id === item.id);
 
-                        }}>
-                            <Image style={styles.like} source={heart} />
+
+                    return (
+                        <TouchableOpacity 
+                        onPress={()=>HandleNavigate(item)}
+                        style={styles.box}>
+                            <View style={styles.imageContainer}>
+                                <Image style={styles.image} source={{ uri: item.image }} />
+                            </View>
+                            <View style={styles.textContainer}>
+                                <Text numberOfLines={1} style={styles.title}>{item.title}</Text>
+                                <Text style={styles.price}>${item.price}</Text>
+                                <View style={styles.ratingContainer}>
+                                    <Text style={styles.ratingText}>⭐ {item.rating.rate} ({item.rating.count})</Text>
+                                </View>
+                            </View>
+
+                            {/* Like Button */}
+                            <TouchableOpacity style={styles.likeContainer} onPress={() => HandleLike(item)}>
+                                <Image 
+                                    style={styles.like} 
+                                    source={isLiked ? heart1 : heart} 
+                                />
+                            </TouchableOpacity>
+
+                            {/* Add/Remove Cart Button */}
+                            {/* <TouchableOpacity
+                                style={[
+                                    styles.cartButton, 
+                                    { backgroundColor: inCart ? Colors.RED : Colors.PRIMARY_COLOR }
+                                ]}
+                                onPress={() => cartHandle(item)}
+                            >
+                                <Text style={styles.cartButtonText}>
+                                    {inCart ? 'Remove from Cart' : 'Add to Cart'}
+                                </Text>
+                            </TouchableOpacity> */}
                         </TouchableOpacity>
-                    </View>
-                )}
+                    );
+                }}
             />
         </View>
     );
 };
 
+
+
 export default SpecialComponent;
 
 const styles = StyleSheet.create({
-    container: {
-        // paddingVertical: 10,
-    },
+    container: {},
     box: {
         width: 170,
         height: 280,
-        // borderWidth: 1,
         borderRadius: 10,
         marginVertical: 10,
         padding: 10,
         backgroundColor: '#fff',
-        elevation: 5
+        elevation: 5,
+        alignItems: 'center',
     },
     imageContainer: {
         alignItems: 'center',
@@ -71,6 +85,16 @@ const styles = StyleSheet.create({
         width: 120,
         height: 150,
         resizeMode: 'contain'
+    },
+    likeContainer: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        position: 'absolute',
+        right: 5,
+        top: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     like: {
         width: 24,
@@ -85,24 +109,23 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '500',
         color: Colors.NATURAL_BLACK,
-        textTransform: 'uppercase'
+        textAlign: 'center',
     },
     price: {
         fontSize: 16,
         color: Colors.BLACK,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
-    originalPrice: {
-        fontSize: 12,
-        textDecorationLine: 'line-through',
-        color: 'gray',
+    cartButton: {
+        width: '100%',
+        padding: 8,
+        borderRadius: 10,
+        alignItems: 'center',
+        marginTop: 10,
     },
-    ratingContainer: {
-        flexDirection: 'row',
-
-    },
-    star: {
-        fontSize: 14,
-        marginHorizontal: 2,
+    cartButtonText: {
+        color: '#fff',
+        fontWeight: 'bold',
     },
 });

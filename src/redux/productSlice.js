@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // API Call to Get Products
 export const fetchProducts = createAsyncThunk('product/fetchProducts', async () => {
-  const response = await axios.get('https://fakestoreapi.com/products'); // Example API
+  const response = await axios.get('https://fakestoreapi.com/products'); 
   return response.data;
 });
 

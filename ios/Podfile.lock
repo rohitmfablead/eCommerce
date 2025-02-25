@@ -8,6 +8,8 @@ PODS:
   - hermes-engine (0.77.0):
     - hermes-engine/Pre-built (= 0.77.0)
   - hermes-engine/Pre-built (0.77.0)
+  - PayPalCheckout (1.3.0)
+  - razorpay-pod (1.3.14)
   - RCT-Folly (2024.11.18.00):
     - boost
     - DoubleConversion
@@ -1210,6 +1212,9 @@ PODS:
     - React-jsiexecutor
     - React-RCTFBReactNativeSpec
     - ReactCommon/turbomodule/core
+  - react-native-razorpay (2.3.0):
+    - razorpay-pod
+    - React
   - react-native-safe-area-context (5.2.0):
     - DoubleConversion
     - glog
@@ -1268,6 +1273,27 @@ PODS:
     - React-graphics
     - React-ImageManager
     - react-native-safe-area-context/common
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - react-native-webview (13.13.2):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
     - React-NativeModulesApple
     - React-RCTFabric
     - React-rendererdebug
@@ -1632,6 +1658,42 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - SocketRocket (0.7.1)
+  - Stripe (24.2.0):
+    - StripeApplePay (= 24.2.0)
+    - StripeCore (= 24.2.0)
+    - StripePayments (= 24.2.0)
+    - StripePaymentsUI (= 24.2.0)
+    - StripeUICore (= 24.2.0)
+  - stripe-react-native (0.41.0):
+    - React-Core
+    - Stripe (~> 24.2.0)
+    - StripeApplePay (~> 24.2.0)
+    - StripeFinancialConnections (~> 24.2.0)
+    - StripePayments (~> 24.2.0)
+    - StripePaymentSheet (~> 24.2.0)
+    - StripePaymentsUI (~> 24.2.0)
+  - StripeApplePay (24.2.0):
+    - StripeCore (= 24.2.0)
+  - StripeCore (24.2.0)
+  - StripeFinancialConnections (24.2.0):
+    - StripeCore (= 24.2.0)
+    - StripeUICore (= 24.2.0)
+  - StripePayments (24.2.0):
+    - StripeCore (= 24.2.0)
+    - StripePayments/Stripe3DS2 (= 24.2.0)
+  - StripePayments/Stripe3DS2 (24.2.0):
+    - StripeCore (= 24.2.0)
+  - StripePaymentSheet (24.2.0):
+    - StripeApplePay (= 24.2.0)
+    - StripeCore (= 24.2.0)
+    - StripePayments (= 24.2.0)
+    - StripePaymentsUI (= 24.2.0)
+  - StripePaymentsUI (24.2.0):
+    - StripeCore (= 24.2.0)
+    - StripePayments (= 24.2.0)
+    - StripeUICore (= 24.2.0)
+  - StripeUICore (24.2.0):
+    - StripeCore (= 24.2.0)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1642,6 +1704,7 @@ DEPENDENCIES:
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
+  - PayPalCheckout
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
@@ -1673,7 +1736,9 @@ DEPENDENCIES:
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - React-Mapbuffer (from `../node_modules/react-native/ReactCommon`)
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
+  - react-native-razorpay (from `../node_modules/react-native-razorpay`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1705,11 +1770,22 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "stripe-react-native (from `../node_modules/@stripe/stripe-react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - PayPalCheckout
+    - razorpay-pod
     - SocketRocket
+    - Stripe
+    - StripeApplePay
+    - StripeCore
+    - StripeFinancialConnections
+    - StripePayments
+    - StripePaymentSheet
+    - StripePaymentsUI
+    - StripeUICore
 
 EXTERNAL SOURCES:
   boost:
@@ -1785,8 +1861,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   React-microtasksnativemodule:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/microtasks"
+  react-native-razorpay:
+    :path: "../node_modules/react-native-razorpay"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1849,6 +1929,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  stripe-react-native:
+    :path: "../node_modules/@stripe/stripe-react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -1860,7 +1942,9 @@ SPEC CHECKSUMS:
   fmt: a40bb5bd0294ea969aaaba240a927bd33d878cdd
   glog: eb93e2f488219332457c3c4eafd2738ddc7e80b8
   hermes-engine: 1f783c3d53940aed0d2c84586f0b7a85ab7827ef
-  RCT-Folly: e78785aa9ba2ed998ea4151e314036f6c49e6d82
+  PayPalCheckout: 06cb1e4f5bfdca33b8eb6052d04ac4e4a4ab512c
+  razorpay-pod: ffee2198928e2a5ed2556863af4db6b79722cea3
+  RCT-Folly: 36fe2295e44b10d831836cc0d1daec5f8abcf809
   RCTDeprecation: f5c19ebdb8804b53ed029123eb69914356192fc8
   RCTRequired: 6ae6cebe470486e0e0ce89c1c0eabb998e7c51f4
   RCTTypeSafety: 50d6ec72a3d13cf77e041ff43a0617050fb98e3f
@@ -1889,7 +1973,9 @@ SPEC CHECKSUMS:
   React-logger: 9a0c4e1e41cd640ac49d69aacadab783f7e0096b
   React-Mapbuffer: 6993c785c22a170c02489bc78ed207814cbd700f
   React-microtasksnativemodule: 19230cd0933df6f6dc1336c9a9edc382d62638ae
+  react-native-razorpay: 0272dd684bc9148828c54a72e05059e3e2e8b813
   react-native-safe-area-context: 9c33120e9eac7741a5364cc2d9f74665049b76b3
+  react-native-webview: 8a4fbec772139ab2576aa0f7db9368b01b56a9a9
   React-nativeconfig: cd0fbb40987a9658c24dab5812c14e5522a64929
   React-NativeModulesApple: 45187d13c68d47250a7416b18ff082c7cc07bff7
   React-perflogger: 15a7bcb6c46eae8a981f7add8c9f4172e2372324
@@ -1922,8 +2008,17 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 1d119293b08fc8673e775b6f86482a4d9092cc65
   RNScreens: 261bd41a07149fda79e4893a0148c342c1f49b56
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
+  Stripe: be805dc0e80a7299de7b10ecbe01ce81412654c8
+  stripe-react-native: 01b57a63afbe42b57f24cebdde78eff3d602148b
+  StripeApplePay: 5233ecff535bb0772785d2d18d02b39ec24ecb71
+  StripeCore: e2f70fcaa82e5a9d44d18fe4534358384cdf4821
+  StripeFinancialConnections: 8c8e2273552d4567ec381ee2b0ff1745b8e11ab6
+  StripePayments: beb97f8061066532744ceaa03e59009c9716332e
+  StripePaymentSheet: 0d8ed5270037b1da3eb107c9876cec67b8b1fe43
+  StripePaymentsUI: 6486d8b86bf49b8932506807a8692ce16e9f109d
+  StripeUICore: b59aa9c9e202b6a03a556c3519eff578274f7598
   Yoga: 78d74e245ed67bb94275a1316cdc170b9b7fe884
 
-PODFILE CHECKSUM: f1d3d831180547c653d274d959340a6c5a74dbec
+PODFILE CHECKSUM: e7600404be079f22af2cbe96f1ce4c3b66d5b04f
 
 COCOAPODS: 1.16.2

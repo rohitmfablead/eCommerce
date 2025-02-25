@@ -9,11 +9,15 @@ export const camera =require("../image/camera.png")
 export const bell =require("../image/bell.png")
 export const search =require("../image/search.png")
 export const heart =require("../image/heart.png")
+export const heart1 =require("../image/heart1.png")
 export const homes =require("../image/homes.png")
 export const house =require("../image/house.png")
 export const shopping_cart =require("../image/shopping-cart.png")
 export const trolley =require("../image/trolley.png")
 export const user2 =require("../image/user2.png")
+export const back =require("../image/back.png")
+export const filter =require("../image/filter.png")
+export const remove =require("../image/remove.png")
 
 // banner 
 
